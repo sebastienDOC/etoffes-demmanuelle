@@ -8,6 +8,8 @@ import {
 	FaYoutube,
 	FaHome,
 } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
+import { BsPersonFill, BsPaypal } from "react-icons/bs";
 
 const Footer = () => {
 	return (
@@ -36,7 +38,7 @@ const Footer = () => {
 				</div>
 				{/* ============= LogoIcon End ============= */}
 				{/* ============= LocateUs Start  ============= */}
-				<div>
+				<div className="flex flex-col justify-center">
 					<h2 className="text-2xl font-semibold text-white mb-4">Trouvez nous !</h2>
 					<div className="text-base flex flex-col gap-2">
 						<p>589 rue Jean Jaurès, 21300 Chenôve</p>
@@ -47,8 +49,47 @@ const Footer = () => {
 				</div>
 				{/* ============= LocateUs End ============= */}
 				{/* ============= Profile Start ============= */}
+				<div className="flex flex-col justify-center">
+					<h2 className="text-2xl font-semibold text-white mb-4">Profil</h2>
+					<div className="text-base flex flex-col gap-2">
+						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+							<span className="text-lg">
+								<BsPersonFill />
+							</span>
+							Mon compte
+						</p>
+						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+							<span className="text-lg">
+								<BsPaypal />
+							</span>
+							Paiement
+						</p>
+						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+							<span className="text-lg">
+								<FaHome />
+							</span>
+							Suivi de commande
+						</p>
+						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+							<span className="text-lg">
+								<MdLocationOn />
+							</span>
+							Aide & Support
+						</p>
+					</div>
+				</div>
 				{/* ============= Profile End ============= */}
 				{/* ============= Subscribe Start ============= */}
+				<div className="flex flex-col justify-center">
+					<input
+						className="bg-transparent border px-4 py-2 text-sm"
+						placeholder="Votre e-mail"
+						type="text"
+					/>
+					<button className="text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-black">
+						Inscription
+					</button>
+				</div>
 				{/* ============= Subscribe End ============= */}
 			</div>
 		</div>
