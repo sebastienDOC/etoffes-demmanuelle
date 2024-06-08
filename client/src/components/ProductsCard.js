@@ -1,10 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
 const ProductsCard = ({ product }) => {
+	const navigate = useNavigate();
+	const _id = product.title;
+	const idString = (_id) => {
+		return String(_id).toLowerCase().split(" ").join("");
+	};
+	const rootId = idString(_id);
+
+	const handleDetails = () => {
+		navigate(`/product/${rootId}`, {
+			state: {
+				item: product,
+			},
+		});
+	};
 	return (
 		<div className="group relative">
-			<div className="w-full h-96 cursor-pointer overflow-hidden">
+			<div
+				onClick={handleDetails}
+				className="w-full h-96 cursor-pointer overflow-hidden"
+			>
 				<img
 					src={product.image}
 					alt="Produit"
