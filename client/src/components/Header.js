@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
 	const productData = useSelector((state) => state.etoffes.productData);
+	const userInfo = useSelector((state) => state.etoffes.userInfo);
+	const userImage = useSelector((state) => state?.etoffes?.userInfo?.image);
 
 	return (
 		<div className="w-full h-20 bg-white font-titleFont border-b-[1px] border-b-gray-800 sticky top-0 z-50">
@@ -47,11 +49,18 @@ const Header = () => {
 							</span>
 						</div>
 					</Link>
-					<img
-						src={userLogo}
-						alt="Voir le profil"
-						className="w-8"
-					/>
+					<Link to="/login">
+						<img
+							src={userInfo === null ? userLogo : userImage}
+							alt="Profil"
+							className="w-8 h-8 rounded-full"
+						/>
+					</Link>
+					{userInfo && (
+						<p className="text-base font-titleFont font-semibold underline underline-offset-2">
+							{userInfo.name}
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

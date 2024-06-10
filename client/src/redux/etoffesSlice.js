@@ -46,6 +46,14 @@ export const etoffesSlice = createSlice({
 				item.quantity--;
 			}
 		},
+		// ============ User Start ============ //
+		addUser: (state, action) => {
+			state.userInfo = action.payload;
+		},
+		removeUser: (state) => {
+			state.userInfo = null;
+		},
+		// ============ User End ============ //
 	},
 });
 
@@ -55,5 +63,7 @@ export const {
 	resetCart,
 	increamentQuantity,
 	decreamentQuantity,
+	addUser,
+	removeUser,
 } = etoffesSlice.actions;
 export default etoffesSlice.reducer;

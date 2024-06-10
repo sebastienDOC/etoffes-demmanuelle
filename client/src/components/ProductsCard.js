@@ -37,13 +37,16 @@ const ProductsCard = ({ product }) => {
 				<div className="flex justify-between items-center">
 					<div>
 						<h2 className="font-titleFont text-base font-bold">
-							{product.title.substring(0, 15)}
+							{product.title.substring(0, 15).charAt(0).toUpperCase() +
+								product.title.substring(0, 15).slice(1).toLowerCase()}
 						</h2>
 					</div>
-					<div className="flex justify-end gap-2 relative overflow-hidden w-28 text-sm">
-						<div className="flex gap-2 transform group-hover:translate-x-24 transition-transform duration-500">
-							<p className="line-through text-gray-500">{product.oldPrice}€</p>
-							<p className="font-semibold">{product.price}€</p>
+					<div className="flex justify-end gap-2 relative overflow-hidden w-30 text-sm">
+						<div className="flex gap-2 transform group-hover:translate-x-32 transition-transform duration-500">
+							<p className="line-through text-gray-500">
+								{product.oldPrice.toFixed(2)}€
+							</p>
+							<p className="font-semibold">{product.price.toFixed(2)}€</p>
 						</div>
 						<p
 							onClick={() =>
@@ -52,7 +55,7 @@ const ProductsCard = ({ product }) => {
 										_id: product._id,
 										title: product.title,
 										image: product.image,
-										price: product.price,
+										price: product.price.toFixed(2),
 										quantity: 1,
 										description: product.description,
 									})
@@ -70,13 +73,20 @@ const ProductsCard = ({ product }) => {
 				<div>
 					<p>{product.category}</p>
 				</div>
-				<div className="absolute top-4 right-0">
+				{/* <div className="absolute top-4 right-0">
 					{product.isNew && (
 						<p className="bg-black text-white font-semibold font-titleFont px-6 py-1">
 							New
 						</p>
 					)}
-				</div>
+				</div> */}
+				{/* <div className="absolute top-0 right-0">
+					{product.credit && (
+						<p className="bg-black text-white font-semibold font-titleFont px-6 py-1">
+							{product.credit}
+						</p>
+					)}
+				</div> */}
 			</div>
 			<ToastContainer
 				position="top-left"
