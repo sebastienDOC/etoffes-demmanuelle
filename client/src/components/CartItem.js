@@ -43,7 +43,7 @@ const CartItem = () => {
 						<h2 className="w-52">{item.title}</h2>
 						<p className="w-10">{item.price}€</p>
 						<div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
-							<p className="text-sm">Quantity</p>
+							<p className="text-sm">Quantité</p>
 							<div className="flex items-center gap-4 text-sm font-semibold">
 								<span
 									onClick={() =>
@@ -99,7 +99,7 @@ const CartItem = () => {
 					<span>
 						<HiOutlineArrowLeft />
 					</span>
-					Retour aux produ
+					Retour aux produits
 				</button>
 			</Link>
 			<ToastContainer

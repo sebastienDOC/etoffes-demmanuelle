@@ -14,7 +14,7 @@ import { BsPersonFill, BsPaypal } from "react-icons/bs";
 const Footer = () => {
 	return (
 		<div className="bg-black text-[#949494] py-20 font-titleFont">
-			<div className="max-w-screen-xl mx-auto grid grid-cols-4">
+			<div className="max-w-screen-xl mx-auto grid grid-cols-3">
 				{/* ============= LogoIcon Start ============= */}
 				<div className="flex flex-col gap-7">
 					<img
@@ -79,18 +79,6 @@ const Footer = () => {
 					</div>
 				</div>
 				{/* ============= Profile End ============= */}
-				{/* ============= Subscribe Start ============= */}
-				<div className="flex flex-col justify-center">
-					<input
-						className="bg-transparent border px-4 py-2 text-sm"
-						placeholder="Votre e-mail"
-						type="text"
-					/>
-					<button className="text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-black">
-						Inscription
-					</button>
-				</div>
-				{/* ============= Subscribe End ============= */}
 			</div>
 		</div>
 	);

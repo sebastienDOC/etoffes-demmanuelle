@@ -1,4 +1,3 @@
-import "./App.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { ScrollRestoration } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -8,6 +7,8 @@ import Cart from "./pages/Cart";
 import { productsData } from "./api/Api";
 import Product from "./components/Product";
 import Login from "./pages/Login";
+import Shop from "./pages/Shop";
+import WishList from "./pages/WishList";
 
 const Layout = () => {
 	return (
@@ -39,8 +40,16 @@ const router = createBrowserRouter([
 				element: <Cart />,
 			},
 			{
+				path: "/wishlist",
+				element: <WishList />,
+			},
+			{
 				path: "/login",
 				element: <Login />,
+			},
+			{
+				path: "/shop",
+				element: <Shop />,
 			},
 		],
 	},

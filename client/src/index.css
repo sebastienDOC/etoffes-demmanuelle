@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.svg-wishlist {
+	fill: gray;
+	transition: fill 0.3s;
+}
+
+.svg-wishlist:hover,
+.svg-wishlist-active {
+	fill: red;
+}

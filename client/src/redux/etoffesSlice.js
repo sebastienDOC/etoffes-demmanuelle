@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
 	productData: [],
+	wishList: [],
 	userInfo: null,
 };
 
@@ -54,6 +56,26 @@ export const etoffesSlice = createSlice({
 			state.userInfo = null;
 		},
 		// ============ User End ============ //
+		// ============ WishList Start ============ //
+		addToWishlist: (state, action) => {
+			const item = state.wishList.find((item) => item._id === action.payload._id);
+
+			if (item) {
+				item.quantity += action.payload.quantity;
+			} else {
+				state.wishList.push(action.payload);
+			}
+		},
+
+		removeFromWishlist: (state, action) => {
+			state.wishList = state.wishList.filter(
+				(item) => item._id !== action.payload
+			);
+		},
+		resetWishList: (state) => {
+			state.wishList = [];
+		},
+		// ============ WishList Ends ============ //
 	},
 });
 
@@ -65,5 +87,8 @@ export const {
 	decreamentQuantity,
 	addUser,
 	removeUser,
+	addToWishlist,
+	removeFromWishlist,
+	resetWishList,
 } = etoffesSlice.actions;
 export default etoffesSlice.reducer;

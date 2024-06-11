@@ -41,10 +41,10 @@ const Product = () => {
 						<h2 className="text-4xl font-semibold">{details.title}</h2>
 						<div className="flex items-center gap-4 mt-3">
 							<p className="line-through text-gray-500 font-base">
-								{details.oldPrice ? details.oldPrice.toFixed(2) + "€" : ""}
+								{details.oldPrice ? details.oldPrice + "€" : ""}
 							</p>
 							<p className="text-2xl font-medium text-gray-900">
-								{details.price ? details.price.toFixed(2) + "€" : ""}
+								{details.price ? details.price + "€" : ""}
 							</p>
 						</div>
 					</div>

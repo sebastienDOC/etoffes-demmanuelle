@@ -1,18 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/etoffesSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	addToCart,
+	addToWishlist,
+	removeFromWishlist,
+} from "../redux/etoffesSlice";
+import { toast } from "react-toastify";
 
 const ProductsCard = ({ product }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const wishList = useSelector((state) => state.etoffes.wishList);
 	const _id = product.title;
 	const idString = (_id) => {
 		return String(_id).toLowerCase().split(" ").join("");
 	};
 	const rootId = idString(_id);
+
+	const isWishlisted = wishList.some((item) => item._id === product._id);
 
 	const handleDetails = () => {
 		navigate(`/product/${rootId}`, {
@@ -21,6 +28,27 @@ const ProductsCard = ({ product }) => {
 			},
 		});
 	};
+
+	const handleWishlist = () => {
+		if (isWishlisted) {
+			dispatch(removeFromWishlist(product._id));
+			toast.error(`${product.title} a été retiré de votre liste de souhait !`);
+		} else {
+			dispatch(
+				addToWishlist({
+					_id: product._id,
+					title: product.title,
+					image: product.image,
+					price: product.price.toFixed(2),
+					quantity: 1,
+					description: product.description,
+					category: product.category,
+				})
+			);
+			toast.success(`${product.title} a été ajouté de votre liste de souhait !`);
+		}
+	};
+
 	return (
 		<div className="group relative">
 			<div
@@ -59,7 +87,7 @@ const ProductsCard = ({ product }) => {
 										quantity: 1,
 										description: product.description,
 									})
-								) & toast.success(`${product.title} a été ajouté !`)
+								) & toast.success(`${product.title} a été ajouté au panier !`)
 							}
 							className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500"
 						>
@@ -73,33 +101,23 @@ const ProductsCard = ({ product }) => {
 				<div>
 					<p>{product.category}</p>
 				</div>
-				{/* <div className="absolute top-4 right-0">
-					{product.isNew && (
-						<p className="bg-black text-white font-semibold font-titleFont px-6 py-1">
-							New
-						</p>
-					)}
-				</div> */}
-				{/* <div className="absolute top-0 right-0">
-					{product.credit && (
-						<p className="bg-black text-white font-semibold font-titleFont px-6 py-1">
-							{product.credit}
-						</p>
-					)}
-				</div> */}
+				<div
+					onClick={handleWishlist}
+					className="absolute top-4 right-4 py-2 px-2 bg-white rounded-full flex items-center justify-center cursor-pointer"
+				>
+					<button className="z-40">
+						<svg
+							className={`w-6 svg-wishlist ${
+								isWishlisted ? "svg-wishlist-active" : ""
+							}`}
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512 512"
+						>
+							<path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+						</svg>
+					</button>
+				</div>
 			</div>
-			<ToastContainer
-				position="top-left"
-				autoClose={2000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="dark"
-			/>
 		</div>
 	);
 };
