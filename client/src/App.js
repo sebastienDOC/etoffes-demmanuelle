@@ -9,6 +9,7 @@ import Product from "./components/Product";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import WishList from "./pages/WishList";
+import CategoryPage from "./pages/CategoryPage";
 
 const Layout = () => {
 	return (
@@ -50,6 +51,19 @@ const router = createBrowserRouter([
 			{
 				path: "/shop",
 				element: <Shop />,
+			},
+			// Ajoutez les routes spécifiques pour chaque catégorie
+			{
+				path: "/shop/homme",
+				element: <CategoryPage category="homme" />,
+			},
+			{
+				path: "/shop/femme",
+				element: <CategoryPage category="femme" />,
+			},
+			{
+				path: "/shop/enfants",
+				element: <CategoryPage category="enfants" />,
 			},
 		],
 	},

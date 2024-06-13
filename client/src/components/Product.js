@@ -13,7 +13,6 @@ const Product = () => {
 	useEffect(() => {
 		setDetails(location.state.item);
 	}, []);
-	console.log(details);
 
 	return (
 		<div>

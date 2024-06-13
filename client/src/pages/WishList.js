@@ -30,7 +30,7 @@ const WishList = () => {
 						<h2 className="text-2xl text-[#D7A099] py-2 w-full text-center">
 							Votre liste de souhait est vide, retournez vite faire du shopping !
 						</h2>
-						<Link to="/">
+						<Link to="/shop">
 							<button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
 								<span>
 									<HiOutlineArrowLeft />

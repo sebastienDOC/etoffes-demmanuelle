@@ -91,7 +91,7 @@ const Cart = () => {
 						draggable
 						pauseOnHover
 						theme="dark"
-					/>{" "}
+					/>
 				</div>
 			) : (
 				<div className="h-[600px] w-full flex flex-col items-center">
@@ -104,7 +104,7 @@ const Cart = () => {
 						<h2 className="text-2xl text-[#D7A099] py-2 w-full text-center">
 							Votre panier est vide, retournez vite faire du shopping !
 						</h2>
-						<Link to="/">
+						<Link to="/shop">
 							<button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
 								<span>
 									<HiOutlineArrowLeft />
