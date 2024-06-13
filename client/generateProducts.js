@@ -1,4 +1,3 @@
-// Importation des bibliothèques nécessaires
 const { faker } = require("@faker-js/faker");
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
@@ -77,6 +76,7 @@ const generateProduct = async () => {
 		"caramel",
 		"saumon",
 	];
+	const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
 	const randomCategory =
 		categories[Math.floor(Math.random() * categories.length)];
@@ -85,6 +85,7 @@ const generateProduct = async () => {
 	const randomClothingType =
 		clothingTypes[Math.floor(Math.random() * clothingTypes.length)];
 	const randomColor = colors[Math.floor(Math.random() * colors.length)];
+	const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
 
 	const price = parseFloat((Math.random() * 1000).toFixed(2));
 	const oldPrice = price + parseFloat((Math.random() * 500).toFixed(2));
@@ -101,10 +102,23 @@ const generateProduct = async () => {
 		const imageUrl = response.data.urls.regular;
 		let credit = `Photo by ${response.data.user.name} on Unsplash`;
 
+		// Création du titre en ajoutant taille, type et couleur
+		const title =
+			`${randomAdjective} ${randomClothingType} ${randomColor}`.toUpperCase();
+		const titleWords = title.split(" ");
+		let type = "";
+		let color = "";
+
+		if (titleWords.length >= 2) {
+			type = titleWords[1];
+		}
+		if (titleWords.length >= 3) {
+			color = titleWords[2];
+		}
+
 		return {
 			_id: uuidv4(),
-			title:
-				`${randomAdjective} ${randomClothingType} ${randomColor}`.toUpperCase(),
+			title: title,
 			description: faker.commerce.productDescription(),
 			oldPrice: oldPrice,
 			price: price,
@@ -114,6 +128,9 @@ const generateProduct = async () => {
 			stock: Math.floor(Math.random() * 1000),
 			rating: Math.ceil(Math.random() * 5),
 			review: Math.floor(Math.random() * 1000),
+			size: randomSize,
+			type: type.toUpperCase(),
+			color: color.toUpperCase(),
 		};
 	} catch (error) {
 		console.error(

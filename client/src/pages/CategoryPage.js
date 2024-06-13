@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductsCard from "../components/ProductsCard";
 import data from "../api/products.json";
 import Sort from "../components/Sort";
@@ -9,39 +9,54 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
+import { ToastContainer } from "react-toastify";
 
 const CategoryPage = ({ category }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [selectedFilters, setSelectedFilters] = useState({
-		clothing: new Set(),
+		type: new Set(),
 		color: new Set(),
+		size: new Set(),
 	});
 	const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
-	const productsPerPage = 20;
+	const productsPerPage = 20; // Nombre de produits par page
 
 	const filterProducts = (product) => {
 		const categoryMatch =
 			product.category.toLowerCase() === category.toLowerCase();
-		const clothingMatch =
-			selectedFilters.clothing.size === 0 ||
-			[...selectedFilters.clothing].some((clothing) =>
-				product.title.toLowerCase().includes(clothing.toLowerCase())
+		const typeMatch =
+			selectedFilters.type.size === 0 ||
+			[...selectedFilters.type].some((type) =>
+				product.type.toLowerCase().includes(type.toLowerCase())
 			);
 		const colorMatch =
 			selectedFilters.color.size === 0 ||
 			[...selectedFilters.color].some((color) =>
-				product.title.toLowerCase().includes(color.toLowerCase())
+				product.color.toLowerCase().includes(color.toLowerCase())
+			);
+		const sizeMatch =
+			selectedFilters.size.size === 0 ||
+			[...selectedFilters.size].some((size) =>
+				product.size.toLowerCase().includes(size.toLowerCase())
 			);
 		const priceMatch =
 			product.price >= priceRange.min && product.price <= priceRange.max;
 
-		return categoryMatch && clothingMatch && colorMatch && priceMatch;
+		return categoryMatch && typeMatch && colorMatch && sizeMatch && priceMatch;
 	};
 
 	const currentProducts = data.filter(filterProducts);
 	const totalProductsCount = currentProducts.length;
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+	// Calcul du début et de la fin des produits affichés pour la pagination
+	const indexOfLastProduct = currentPage * productsPerPage;
+	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+	const displayedProducts = currentProducts.slice(
+		indexOfFirstProduct,
+		indexOfLastProduct
+	);
 
 	const handleSetSelectedFilters = (filters) => {
 		setSelectedFilters(filters);
@@ -78,7 +93,7 @@ const CategoryPage = ({ category }) => {
 			</div>
 
 			{/* Contenu principal à droite */}
-			<div className="flex-1 p-4">
+			<div className="flex-1 p-4 mt-10">
 				<h2 className="font-bold text-3xl mb-4 text-center">
 					{category.toUpperCase()}
 				</h2>
@@ -103,7 +118,7 @@ const CategoryPage = ({ category }) => {
 
 				{/* Liste de produits */}
 				<div className="grid grid-cols-4 gap-4">
-					{currentProducts.map((item) => (
+					{displayedProducts.map((item) => (
 						<ProductsCard
 							key={item._id}
 							product={item}
@@ -112,7 +127,7 @@ const CategoryPage = ({ category }) => {
 				</div>
 
 				{/* Pagination */}
-				{currentProducts.length !== 0 && (
+				{currentProducts.length > productsPerPage && (
 					<div className="flex justify-center mt-4">
 						<button
 							className={`${
@@ -165,6 +180,18 @@ const CategoryPage = ({ category }) => {
 					</button>
 				</Link>
 			</div>
+			<ToastContainer
+				position="top-left"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
 		</div>
 	);
 };

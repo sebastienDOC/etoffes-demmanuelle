@@ -1,7 +1,22 @@
 import React from "react";
-// import ProductsCard from "./ProductsCard";
+import Categories from "./Categories";
+import Discount from "./Discount";
+import Carousel from "./BestSellers";
+import data from "../api/products.json"; // Importez vos données de produits ici
 
-const Products = ({ products }) => {
+const Products = () => {
+	// Fonction pour extraire le type à partir du titre du produit
+	const getProductType = (title) => {
+		const words = title.split(" ");
+		if (words.length >= 2) {
+			return words[1]; // Le deuxième mot est considéré comme le type
+		}
+		return "";
+	};
+	// Extraire tous les types uniques des produits
+	const types = [
+		...new Set(data.map((product) => getProductType(product.title))),
+	];
 	return (
 		<div className="py-10">
 			<div className="flex flex-col items-center gap-4">
@@ -28,6 +43,12 @@ const Products = ({ products }) => {
 					/>
 				))}
 			</div> */}
+
+			<Carousel />
+
+			<Categories types={types} />
+
+			<Discount />
 		</div>
 	);
 };

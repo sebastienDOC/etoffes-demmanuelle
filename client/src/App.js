@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import WishList from "./pages/WishList";
 import CategoryPage from "./pages/CategoryPage";
+import Shipping from "./components/Shipping";
 
 const Layout = () => {
 	return (
@@ -17,6 +18,7 @@ const Layout = () => {
 			<Header />
 			<ScrollRestoration />
 			<Outlet />
+			<Shipping />
 			<Footer />
 		</div>
 	);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { logo, userLogo, wishImg } from "../assets/index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Band from "./Band";
 
 const Header = () => {
 	const productData = useSelector((state) => state.etoffes.productData);
@@ -85,6 +86,7 @@ const Header = () => {
 					)}
 				</div>
 			</div>
+			<Band />
 		</div>
 	);
 };

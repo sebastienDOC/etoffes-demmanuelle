@@ -1,0 +1,86 @@
+[
+	{
+		"name": "CHAUSSURES",
+		"img": "https://i.ibb.co/WsVcBRk/pexels-felipepelaquim-1895019.jpg"
+	},
+	{
+		"name": "GILET",
+		"img": "https://i.ibb.co/fYy5nsy/pexels-yakup-polat-420882786-20596419.jpg"
+	},
+	{
+		"name": "SWEAT",
+		"img": "https://i.ibb.co/MVWHkxk/pexels-fernando-ramirez-poveda-1371985-2962377.jpg"
+	},
+	{
+		"name": "MANTEAU",
+		"img": "https://i.ibb.co/rZZ638S/pexels-ana-arh-259363-792325.jpg"
+	},
+	{
+		"name": "T-SHIRT",
+		"img": "https://i.ibb.co/D8VJLbH/pexels-jonathon-burton-1310223-2560894.jpg"
+	},
+	{
+		"name": "CRAVATE",
+		"img": "https://i.ibb.co/FJt945t/pexels-tima-miroshnichenko-6764918.jpg"
+	},
+	{
+		"name": "JEAN",
+		"img": "https://i.ibb.co/mTsMtr8/pexels-alexandro-david-871783-2801756.jpg"
+	},
+	{
+		"name": "CHEMISE",
+		"img": "https://i.ibb.co/2k9KgFr/pexels-pixabay-356252.jpg"
+	},
+	{
+		"name": "TRENCH",
+		"img": "https://i.ibb.co/0VR6vHW/pexels-vlada-karpovich-9968534.jpg"
+	},
+	{
+		"name": "SHORT",
+		"img": "https://i.ibb.co/M2GX670/pexels-smgrafias-3610826.jpg"
+	},
+	{
+		"name": "BLOUSON",
+		"img": "https://i.ibb.co/xmZ3rZ1/pexels-tony-schnagl-5592269.jpg"
+	},
+	{
+		"name": "COSTUME",
+		"img": "https://i.ibb.co/4tDQT83/pexels-chloekalaartist-1043473.jpg"
+	},
+	{
+		"name": "CARDIGAN",
+		"img": "https://i.ibb.co/s2y6nZz/pexels-portraitsbydanailya-2495795.jpg"
+	},
+	{
+		"name": "PANTALON",
+		"img": "https://i.ibb.co/187D29P/pexels-ana-ferreira-914401-1895943.jpg"
+	},
+	{
+		"name": "ENSEMBLE",
+		"img": "https://i.ibb.co/9hWYvY3/pexels-gabby-k-7691223.jpg"
+	},
+	{
+		"name": "PULL",
+		"img": "https://i.ibb.co/dPcwG3S/pexels-tima-miroshnichenko-5407259.jpg"
+	},
+	{
+		"name": "JUPE",
+		"img": "https://i.ibb.co/VHj6mZm/pexels-myca-1152994.jpg"
+	},
+	{
+		"name": "BLAZER",
+		"img": "https://i.ibb.co/HDnTLxx/pexels-frendsmans-3765549.jpg"
+	},
+	{
+		"name": "VESTE",
+		"img": "https://i.ibb.co/vJZTwhx/pexels-gabrielacheloni-2530203.jpg"
+	},
+	{
+		"name": "SAC",
+		"img": "https://i.ibb.co/YQv0KJP/pexels-marleneleppanen-1039518.jpg"
+	},
+	{
+		"name": "ROBE",
+		"img": "https://i.ibb.co/cTJ52C7/pexels-manei-2235073.jpg"
+	}
+]

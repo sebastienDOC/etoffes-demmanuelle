@@ -9,11 +9,13 @@ const Sort = ({
 	handleMaxPriceChange,
 }) => {
 	const [filters, setFilters] = useState({
-		clothing: new Set(),
+		type: new Set(),
 		color: new Set(),
+		size: new Set(),
 	});
-	const [showMoreClothing, setShowMoreClothing] = useState(false);
+	const [showMoreType, setShowMoreType] = useState(false);
 	const [showMoreColor, setShowMoreColor] = useState(false);
+	const [showMoreSize, setShowMoreSize] = useState(false);
 
 	const handleFilterChange = (category, value) => {
 		setFilters((prevFilters) => {
@@ -34,85 +36,90 @@ const Sort = ({
 
 	const handleResetFilters = () => {
 		const resetFilters = {
-			clothing: new Set(),
+			type: new Set(),
 			color: new Set(),
+			size: new Set(),
 		};
 		setFilters(resetFilters);
 		updateSelectedFilters(resetFilters);
 	};
 
-	const getUniqueWords = (position) => {
-		const uniqueWords = new Set();
+	const getUniqueValues = (attribute) => {
+		const uniqueValues = new Set();
 		data.forEach((item) => {
-			const word = item.title.split(" ")[position];
-			if (word) uniqueWords.add(word);
+			const value = item[attribute];
+			if (value) uniqueValues.add(value);
 		});
-		return [...uniqueWords];
+		return [...uniqueValues];
 	};
 
-	const uniqueClothingWords = getUniqueWords(1);
-	const uniqueColorWords = getUniqueWords(2);
+	const uniqueTypeValues = getUniqueValues("type");
+	const uniqueColorValues = getUniqueValues("color");
+	const uniqueSizeValues = getUniqueValues("size");
 
-	const displayedClothingWords = showMoreClothing
-		? uniqueClothingWords
-		: uniqueClothingWords.slice(0, 5);
-	const displayedColorWords = showMoreColor
-		? uniqueColorWords
-		: uniqueColorWords.slice(0, 5);
+	const displayedTypeValues = showMoreType
+		? uniqueTypeValues
+		: uniqueTypeValues.slice(0, 5);
+	const displayedColorValues = showMoreColor
+		? uniqueColorValues
+		: uniqueColorValues.slice(0, 5);
+	const displayedSizeValues = showMoreSize
+		? uniqueSizeValues
+		: uniqueSizeValues.slice(0, 5);
 
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-4">
 				<div>
-					<h3 className="font-bold text-lg mb-2">Vêtement</h3>
-					{displayedClothingWords.map((word, idx) => (
+					<h3 className="font-bold text-lg mb-2">Type</h3>
+					{displayedTypeValues.map((value, idx) => (
 						<div
 							key={idx}
 							className="flex items-center"
 						>
 							<input
 								type="checkbox"
-								id={`clothing-${word}`}
-								name="clothing"
-								value={word}
-								onChange={() => handleFilterChange("clothing", word)}
-								checked={filters.clothing.has(word)}
+								id={`type-${value}`}
+								name="type"
+								value={value}
+								onChange={() => handleFilterChange("type", value)}
+								checked={filters.type.has(value)}
 							/>
 							<label
-								htmlFor={`clothing-${word}`}
+								htmlFor={`type-${value}`}
 								className="ml-2"
 							>
-								{word}
+								{value}
 							</label>
 						</div>
 					))}
 					<button
 						className="text-blue-500 mt-2 focus:outline-none"
-						onClick={() => setShowMoreClothing((prev) => !prev)}
+						onClick={() => setShowMoreType((prev) => !prev)}
 					>
-						{showMoreClothing ? "Moins de filtres" : "Plus de filtres"}
+						{showMoreType ? "Moins de filtres" : "Plus de filtres"}
 					</button>
 				</div>
 				<div>
 					<h3 className="font-bold text-lg mb-2">Couleur</h3>
-					{displayedColorWords.map((word, idx) => (
+					{displayedColorValues.map((value, idx) => (
 						<div
 							key={idx}
 							className="flex items-center"
 						>
 							<input
 								type="checkbox"
-								id={`color-${word}`}
+								id={`color-${value}`}
 								name="color"
-								value={word}
-								onChange={() => handleFilterChange("color", word)}
-								checked={filters.color.has(word)}
+								value={value}
+								onChange={() => handleFilterChange("color", value)}
+								checked={filters.color.has(value)}
 							/>
 							<label
-								htmlFor={`color-${word}`}
+								htmlFor={`color-${value}`}
 								className="ml-2"
 							>
-								{word}
+								{value}
 							</label>
 						</div>
 					))}
@@ -121,6 +128,36 @@ const Sort = ({
 						onClick={() => setShowMoreColor((prev) => !prev)}
 					>
 						{showMoreColor ? "Moins de filtres" : "Plus de filtres"}
+					</button>
+				</div>
+				<div>
+					<h3 className="font-bold text-lg mb-2">Taille</h3>
+					{displayedSizeValues.map((value, idx) => (
+						<div
+							key={idx}
+							className="flex items-center"
+						>
+							<input
+								type="checkbox"
+								id={`size-${value}`}
+								name="size"
+								value={value}
+								onChange={() => handleFilterChange("size", value)}
+								checked={filters.size.has(value)}
+							/>
+							<label
+								htmlFor={`size-${value}`}
+								className="ml-2"
+							>
+								{value}
+							</label>
+						</div>
+					))}
+					<button
+						className="text-blue-500 mt-2 focus:outline-none"
+						onClick={() => setShowMoreSize((prev) => !prev)}
+					>
+						{showMoreSize ? "Moins de filtres" : "Plus de filtres"}
 					</button>
 				</div>
 			</div>
