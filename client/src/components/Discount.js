@@ -35,7 +35,7 @@ const DiscountProducts = () => {
 	};
 
 	return (
-		<div className="relative">
+		<div className="relative my-20">
 			<h2 className="font-titleFont text-4xl font-bold mx-10 my-5">
 				Meilleures Réductions
 			</h2>

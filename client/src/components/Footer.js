@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { BsPersonFill, BsPaypal } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
@@ -52,12 +53,14 @@ const Footer = () => {
 				<div className="flex flex-col justify-center">
 					<h2 className="text-2xl font-semibold text-white mb-4">Profil</h2>
 					<div className="text-base flex flex-col gap-2">
-						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
-							<span className="text-lg">
-								<BsPersonFill />
-							</span>
-							Mon compte
-						</p>
+						<Link to="/login">
+							<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+								<span className="text-lg">
+									<BsPersonFill />
+								</span>
+								Mon compte
+							</p>
+						</Link>
 						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
 							<span className="text-lg">
 								<BsPaypal />

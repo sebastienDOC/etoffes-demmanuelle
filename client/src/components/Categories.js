@@ -18,7 +18,7 @@ const TypesCarousel = () => {
 	};
 
 	return (
-		<div className="relative bg-gray-100 py-3 my-10">
+		<div className="relative bg-gray-100 py-3 my-20">
 			<h2 className="font-titleFont text-4xl font-bold mx-10 my-5">
 				Tous les types de produits
 			</h2>
@@ -30,13 +30,15 @@ const TypesCarousel = () => {
 					{types.map((type, index) => (
 						<div
 							key={index}
-							className="w-1/5 px-2 flex-shrink-0 cursor-pointer group"
+							className="w-1/5 px-2 flex-shrink-0 cursor-pointer group overflow-hidden"
 						>
-							<img
-								src={type.img}
-								alt={type.name}
-								className="h-[350px] w-full object-cover"
-							/>
+							<div className="w-full h-96 overflow-hidden">
+								<img
+									src={type.img}
+									alt={type.name}
+									className="w-full h-full object-cover group-hover:scale-110 duration-500"
+								/>
+							</div>
 							<div className="p-4 text-center group-hover:bg-white transition duration-300">
 								{type.name}
 							</div>
