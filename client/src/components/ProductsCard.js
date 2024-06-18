@@ -65,8 +65,8 @@ const ProductsCard = ({ product }) => {
 				<div className="flex justify-between items-center">
 					<div>
 						<h2 className="font-titleFont text-base font-bold">
-							{product.title.substring(0, 15).charAt(0).toUpperCase() +
-								product.title.substring(0, 15).slice(1).toLowerCase()}
+							{product.title.charAt(0).toUpperCase() +
+								product.title.slice(1).toLowerCase()}
 						</h2>
 					</div>
 					<div className="flex justify-end gap-2 relative overflow-hidden w-30 text-sm">

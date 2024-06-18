@@ -22,7 +22,7 @@ const Banner = () => {
 	}, [currentSlide]);
 
 	return (
-		<div className="w-full h-auto overflow-x-hidden">
+		<div className="w-full h-auto overflow-x-hidden mt-9">
 			<div className="w-scree h-[650px] relative">
 				<div
 					className="w-[400vw] h-full flex transition-transform duration-1000"

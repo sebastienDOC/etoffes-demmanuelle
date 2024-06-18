@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
 import types from "../api/types.json";
+import { Link } from "react-router-dom";
 
 const TypesCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,7 +19,7 @@ const TypesCarousel = () => {
 	};
 
 	return (
-		<div className="relative bg-gray-100 py-3 my-20">
+		<div className="relative bg-gray-200 py-3 my-20">
 			<h2 className="font-titleFont text-4xl font-bold mx-10 my-5">
 				Tous les types de produits
 			</h2>
@@ -28,7 +29,8 @@ const TypesCarousel = () => {
 					style={{ transform: `translateX(-${currentIndex * 20}%)` }}
 				>
 					{types.map((type, index) => (
-						<div
+						<Link
+							to={`/shop/${type.name.toLowerCase()}`}
 							key={index}
 							className="w-1/5 px-2 flex-shrink-0 cursor-pointer group overflow-hidden"
 						>
@@ -42,7 +44,7 @@ const TypesCarousel = () => {
 							<div className="p-4 text-center group-hover:bg-white transition duration-300">
 								{type.name}
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>

@@ -95,10 +95,15 @@ const Product = () => {
 							Ajouter au panier
 						</button>
 					</div>
-					<p className="text-base text-gray-500">
-						Catégorie :{" "}
-						<span className="font-medium capitalize">{details.category}</span>
-					</p>
+					<div>
+						<p className="text-base text-gray-500 mb-10">
+							Taille :<span className="font-medium capitalize"> {details.size}</span>
+						</p>
+						<p className="text-base text-gray-500">
+							Catégorie :
+							<span className="font-medium capitalize"> {details.category}</span>
+						</p>
+					</div>
 				</div>
 			</div>
 			<ToastContainer

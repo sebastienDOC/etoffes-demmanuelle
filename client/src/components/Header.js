@@ -3,6 +3,7 @@ import { logo, userLogo, wishImg } from "../assets/index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Band from "./Band";
+import TypesBand from "./TypesBand";
 
 const Header = () => {
 	const productData = useSelector((state) => state.etoffes.productData);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "../api/products.json";
+import { useLocation } from "react-router-dom";
 
 const Sort = ({
 	setSelectedFilters,
@@ -8,14 +9,17 @@ const Sort = ({
 	handleMinPriceChange,
 	handleMaxPriceChange,
 }) => {
+	const location = useLocation();
 	const [filters, setFilters] = useState({
 		type: new Set(),
 		color: new Set(),
 		size: new Set(),
+		category: new Set(),
 	});
 	const [showMoreType, setShowMoreType] = useState(false);
 	const [showMoreColor, setShowMoreColor] = useState(false);
 	const [showMoreSize, setShowMoreSize] = useState(false);
+	const [showMoreCategory, setShowMoreCategory] = useState(false);
 
 	const handleFilterChange = (category, value) => {
 		setFilters((prevFilters) => {
@@ -39,6 +43,7 @@ const Sort = ({
 			type: new Set(),
 			color: new Set(),
 			size: new Set(),
+			category: new Set(),
 		};
 		setFilters(resetFilters);
 		updateSelectedFilters(resetFilters);
@@ -56,6 +61,7 @@ const Sort = ({
 	const uniqueTypeValues = getUniqueValues("type");
 	const uniqueColorValues = getUniqueValues("color");
 	const uniqueSizeValues = getUniqueValues("size");
+	const uniqueCategoryValues = getUniqueValues("category");
 
 	const displayedTypeValues = showMoreType
 		? uniqueTypeValues
@@ -66,40 +72,72 @@ const Sort = ({
 	const displayedSizeValues = showMoreSize
 		? uniqueSizeValues
 		: uniqueSizeValues.slice(0, 5);
+	const displayedCategoryValues = showMoreCategory
+		? uniqueCategoryValues
+		: uniqueCategoryValues.slice(0, 5);
 
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-4">
-				<div>
-					<h3 className="font-bold text-lg mb-2">Type</h3>
-					{displayedTypeValues.map((value, idx) => (
-						<div
-							key={idx}
-							className="flex items-center"
-						>
-							<input
-								type="checkbox"
-								id={`type-${value}`}
-								name="type"
-								value={value}
-								onChange={() => handleFilterChange("type", value)}
-								checked={filters.type.has(value)}
-							/>
-							<label
-								htmlFor={`type-${value}`}
-								className="ml-2"
+				{["/shop/femme", "/shop/homme", "/shop/enfants"].includes(
+					location.pathname
+				) ? (
+					<div>
+						<h3 className="font-bold text-lg mb-2">Type</h3>
+						{displayedTypeValues.map((value, idx) => (
+							<div
+								key={idx}
+								className="flex items-center"
 							>
-								{value}
-							</label>
-						</div>
-					))}
-					<button
-						className="text-blue-500 mt-2 focus:outline-none"
-						onClick={() => setShowMoreType((prev) => !prev)}
-					>
-						{showMoreType ? "Moins de filtres" : "Plus de filtres"}
-					</button>
-				</div>
+								<input
+									type="checkbox"
+									id={`type-${value}`}
+									name="type"
+									value={value}
+									onChange={() => handleFilterChange("type", value)}
+									checked={filters.type.has(value)}
+								/>
+								<label
+									htmlFor={`type-${value}`}
+									className="ml-2"
+								>
+									{value}
+								</label>
+							</div>
+						))}
+						<button
+							className="text-blue-500 mt-2 focus:outline-none"
+							onClick={() => setShowMoreType((prev) => !prev)}
+						>
+							{showMoreType ? "Moins de filtres" : "Plus de filtres"}
+						</button>
+					</div>
+				) : (
+					<div>
+						<h3 className="font-bold text-lg mb-2">Catégorie</h3>
+						{displayedCategoryValues.map((value, idx) => (
+							<div
+								key={idx}
+								className="flex items-center"
+							>
+								<input
+									type="checkbox"
+									id={`type-${value}`}
+									name="type"
+									value={value}
+									onChange={() => handleFilterChange("category", value)}
+									checked={filters.category.has(value)}
+								/>
+								<label
+									htmlFor={`category-${value}`}
+									className="ml-2"
+								>
+									{value}
+								</label>
+							</div>
+						))}
+					</div>
+				)}
 				<div>
 					<h3 className="font-bold text-lg mb-2">Couleur</h3>
 					{displayedColorValues.map((value, idx) => (
@@ -178,7 +216,7 @@ const Sort = ({
 							placeholder="Min"
 							value={priceRange.min}
 							onChange={handleMinPriceChange}
-							className="bg-gray-200 appearance-none h-10 rounded-l px-4 focus:outline-none "
+							className="text-center appearance-none h-10 rounded-l px-4 focus:outline-none "
 						/>
 					</div>
 					<div>
@@ -195,7 +233,7 @@ const Sort = ({
 						placeholder="Max"
 						value={priceRange.max}
 						onChange={handleMaxPriceChange}
-						className="bg-gray-200 appearance-none h-10 rounded-r px-4 focus:outline-none"
+						className="text-center appearance-none h-10 rounded-r px-4 focus:outline-none"
 					/>
 				</div>
 			</div>
