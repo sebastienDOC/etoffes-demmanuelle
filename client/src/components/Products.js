@@ -1,7 +1,7 @@
 import React from "react";
 import Categories from "./Categories";
 import Discount from "./Discount";
-import Carousel from "./BestSellers";
+import BestSellers from "./BestSellers";
 import data from "../api/products.json"; // Importez vos données de produits ici
 
 const Products = () => {
@@ -24,7 +24,7 @@ const Products = () => {
 					shopping quotidien
 				</h1>
 				<span className="w-20 h-[3px] bg-black"></span>
-				<p className="max-w-[700px] text-gray-600 text-center">
+				<p className="mx-5 sm:max-w-[700px] text-gray-600 text-center">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 					veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -44,7 +44,7 @@ const Products = () => {
 				))}
 			</div> */}
 
-			<Carousel />
+			<BestSellers />
 
 			<Categories types={types} />
 

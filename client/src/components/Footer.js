@@ -15,9 +15,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<div className="bg-black text-[#949494] py-20 font-titleFont">
-			<div className="max-w-screen-xl mx-auto grid grid-cols-3">
+			<div className="max-w-screen-xl mx-auto flex flex-col-reverse gap-14 sm:gap-0 sm:grid grid-cols-3">
 				{/* ============= LogoIcon Start ============= */}
-				<div className="flex flex-col gap-7">
+				<div className="flex flex-col gap-7 items-center text-center">
 					<img
 						src={logo}
 						alt="Logo"
@@ -39,7 +39,7 @@ const Footer = () => {
 				</div>
 				{/* ============= LogoIcon End ============= */}
 				{/* ============= LocateUs Start  ============= */}
-				<div className="flex flex-col justify-center">
+				<div className="flex flex-col justify-center items-center text-center">
 					<h2 className="text-2xl font-semibold text-white mb-4">Trouvez nous !</h2>
 					<div className="text-base flex flex-col gap-2">
 						<p>589 rue Jean Jaurès, 21300 Chenôve</p>
@@ -50,30 +50,30 @@ const Footer = () => {
 				</div>
 				{/* ============= LocateUs End ============= */}
 				{/* ============= Profile Start ============= */}
-				<div className="flex flex-col justify-center">
+				<div className="flex flex-col justify-center items-center text-center">
 					<h2 className="text-2xl font-semibold text-white mb-4">Profil</h2>
 					<div className="text-base flex flex-col gap-2">
 						<Link to="/login">
-							<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+							<p className="flex items-center justify-center gap-3 hover:text-white duration-300 cursor-pointer">
 								<span className="text-lg">
 									<BsPersonFill />
 								</span>
 								Mon compte
 							</p>
 						</Link>
-						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+						<p className="flex items-center gap-3 justify-center hover:text-white duration-300 cursor-pointer">
 							<span className="text-lg">
 								<BsPaypal />
 							</span>
 							Paiement
 						</p>
-						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+						<p className="flex items-center gap-3 justify-center hover:text-white duration-300 cursor-pointer">
 							<span className="text-lg">
 								<FaHome />
 							</span>
 							Suivi de commande
 						</p>
-						<p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+						<p className="flex items-center gap-3 justify-center hover:text-white duration-300 cursor-pointer">
 							<span className="text-lg">
 								<MdLocationOn />
 							</span>

@@ -22,8 +22,8 @@ const Banner = () => {
 	}, [currentSlide]);
 
 	return (
-		<div className="w-full h-auto overflow-x-hidden mt-9">
-			<div className="w-scree h-[650px] relative">
+		<div className="w-full h-auto overflow-x-hidden mt-16 sm:mt-9">
+			<div className="w-screen h-96 sm:h-[650px] relative">
 				<div
 					className="w-[400vw] h-full flex transition-transform duration-1000"
 					style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
@@ -31,7 +31,7 @@ const Banner = () => {
 					<img
 						src={data[0]}
 						alt="Présentation général des produits"
-						className="w-screen h-full object-cover"
+						className="w-screen h-full object-cover object-left"
 						loading="priority"
 					/>
 					<img
@@ -53,7 +53,7 @@ const Banner = () => {
 						loading="priority"
 					/>
 				</div>
-				<div className="absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-20">
+				<div className="absolute w-fit left-0 right-0 mx-auto flex gap-20 sm:gap-8 bottom-5 sm:bottom-20">
 					<div
 						onClick={prevSlide}
 						className="w-14 h-12 border-[1px] border-white-700 flex items-center justify-center hover:cursor-pointer hover:bg-white hover:text-black text-white active:bg-white-900 duration-300"
